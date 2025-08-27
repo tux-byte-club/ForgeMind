@@ -1,6 +1,6 @@
 # Forge Mind
 
-A powerful JavaFX desktop application for local LLM chats, with integrated Google Drive synchronization for chat history and a powerful web search feature.
+A JavaFX desktop application for local LLM chats, with integrated Google Drive synchronization for chat history and a powerful web search feature.
 
 ---
 
