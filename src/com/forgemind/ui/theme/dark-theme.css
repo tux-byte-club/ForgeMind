@@ -1,0 +1,91 @@
+.root {
+    -fx-background-color: #121212;
+    -fx-text-fill: #e0e0e0;
+}
+
+/* Labels, including "Dark Mode" */
+.label {
+    -fx-text-fill: #e0e0e0;
+}
+
+/* Text fields */
+.text-field {
+    -fx-background-color: #2c2c2c;
+    -fx-text-fill: #e0e0e0;
+    -fx-prompt-text-fill: #888888;
+    -fx-background-radius: 6;
+    -fx-border-color: #444444;
+}
+
+.text-field:focused {
+    -fx-border-color: #1976d2;
+    -fx-border-width: 1.5;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #333333;
+    -fx-text-fill: #e0e0e0;
+    -fx-background-radius: 6;
+    -fx-border-color: #444444;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #444444;   /* lighter gray */
+}
+
+.button:pressed {
+    -fx-background-color: #555555;   /* darkest gray */
+}
+
+/* Choice box */
+.choice-box {
+    -fx-background-color: #2c2c2c;
+    -fx-mark-color: #e0e0e0;
+    -fx-text-fill: #e0e0e0;
+}
+
+.choice-box:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.choice-box:showing {
+    -fx-background-color: #2c2c2c;
+}
+
+/* Check box*/
+.check-box {
+    -fx-text-fill: #e0e0e0;   /* Force label visible */
+}
+
+/* Scroll area */
+.scroll-pane {
+    -fx-background: #121212;
+    -fx-border-color: #333333;
+}
+
+/* Containers */
+.hbox, .vbox, .border-pane {
+    -fx-background-color: #121212;
+}
+
+/* ---- CHAT BUBBLES ---- */
+
+/* User (right) bubble */
+.user-bubble {
+    -fx-background-color: #1565c0; /* deeper blue for dark mode */
+    -fx-text-fill: white;
+}
+
+/* AI (left) bubble */
+.ai-bubble {
+    -fx-background-color: #2c2c2c; /* dark gray for dark mode */
+    -fx-text-fill: #e0e0e0;
+}
+
+.user-bubble, .ai-bubble {
+    -fx-background-radius: 12;
+    -fx-padding: 8 12 8 12;
+}
+
