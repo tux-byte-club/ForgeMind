@@ -73,6 +73,7 @@ public class ChatWindow extends Application {
 
         VBox sidebar = new VBox(chatList, newChatButton);
         VBox.setVgrow(chatList, Priority.ALWAYS);
+        sidebar.setPrefWidth(180);
 
         chatList.getSelectionModel().selectedIndexProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal.intValue() >= 0) {
@@ -80,14 +81,48 @@ public class ChatWindow extends Application {
             }
         });
 
-        // Main layout
-        BorderPane root = new BorderPane();
-        root.setTop(topBar);
-        root.setCenter(scrollPane);
-        root.setBottom(inputBox);
-        root.setLeft(sidebar);
+        // Right-click menu for renaming
+        ContextMenu chatMenu = new ContextMenu();
+        MenuItem renameItem = new MenuItem("Rename Chat");
+        renameItem.setOnAction(e -> renameChat());
+        chatMenu.getItems().add(renameItem);
 
-        scene = new Scene(root, 600, 450);
+        chatList.setContextMenu(chatMenu);
+
+        // Main layout
+        // BorderPane root = new BorderPane();
+        // root.setTop(topBar);
+        // root.setCenter(scrollPane);
+        // root.setBottom(inputBox);
+        // root.setLeft(sidebar);
+
+        // scene = new Scene(root, 600, 450);
+
+        // Main chat layout (center)
+        BorderPane chatLayout = new BorderPane();
+        chatLayout.setTop(topBar);
+        chatLayout.setCenter(scrollPane);
+        chatLayout.setBottom(inputBox);
+
+        // SplitPane for toggle
+        SplitPane splitPane = new SplitPane(sidebar, chatLayout);
+        splitPane.setDividerPositions(0.25); // sidebar takes 25%
+        // splitPane.setDividerSize(3);
+
+        // Hamburger button to toggle sidebar
+        Button menuButton = new Button("☰");
+        menuButton.setOnAction(e -> {
+            if (splitPane.getItems().contains(sidebar)) {
+                splitPane.getItems().remove(sidebar);
+            } else {
+                splitPane.getItems().add(0, sidebar);
+                splitPane.setDividerPositions(0.25);
+            }
+        });
+        topBar.getChildren().add(0, menuButton);
+
+        // Scene root
+        scene = new Scene(splitPane, 800, 500);
         applyTheme(); // apply default theme
 
         stage.setTitle("Forge Mind — Project Plasma");
@@ -99,6 +134,20 @@ public class ChatWindow extends Application {
         // Event: send message
         sendButton.setOnAction(e -> handleUserMessage(inputField));
         inputField.setOnAction(e -> handleUserMessage(inputField));
+    }
+
+    private void renameChat() {
+        int index = chatList.getSelectionModel().getSelectedIndex();
+        if (index >= 0) {
+            TextInputDialog dialog = new TextInputDialog(chatList.getItems().get(index));
+            dialog.setHeaderText("Rename Chat");
+            dialog.setContentText("Enter new name:");
+            dialog.showAndWait().ifPresent(newName -> {
+                if (!newName.isBlank()) {
+                    chatList.getItems().set(index, newName);
+                }
+            });
+        }
     }
 
     private void addButtonEffects(Button button) {

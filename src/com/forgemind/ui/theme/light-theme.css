@@ -74,3 +74,8 @@
     -fx-background-radius: 12;
     -fx-padding: 8 12 8 12;
 }
+
+.split-pane-divider {
+    -fx-padding: 0 2 0 2;
+    -fx-background-color: #cccccc;
+}

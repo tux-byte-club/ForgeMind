@@ -89,3 +89,20 @@
     -fx-padding: 8 12 8 12;
 }
 
+.scroll-bar {
+    -fx-background-color: #121212;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #444444;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #1e1e1e;
+}
+
+.split-pane-divider {
+    -fx-padding: 0 2 0 2;  /* makes divider 2px wide */
+    -fx-background-color: #333333;
+}
