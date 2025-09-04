@@ -45,7 +45,7 @@ To get a local copy up and running, follow these simple steps:
 Here's the plan for getting **Forge Mind** up and running. This checklist will be updated as we make progress!
 
 - [ ] **Phase 1: Core Functionality**
-    - [ ] Set up basic JavaFX UI with a chat window.
+    - [x] Set up basic JavaFX UI with a chat window.
     - [ ] Implement Java Native Interface (JNI) to call a `llama.cpp` function.
     - [ ] Successfully load and run a simple LLM model.
     - [ ] Implement basic chat functionality (send input, receive output).
